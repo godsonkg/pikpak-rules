@@ -1,26 +1,26 @@
 # pikpak-rules
 
-个人维护的 PikPak 分流规则集，Surge/Loon/Clash 通用格式（classical text list）。
+自己用的 PikPak 分流规则，Surge / Loon / Clash 通用的文本规则格式。
 
-原规则来源 `whatshub.top/rule/PikPak.list`（讯雷 sandai.net CDN + `DOMAIN-KEYWORD,mypikpak`），
-但整个规则集在原仓库统一走 DIRECT——这对 PikPak 主 App 是错的：PikPak 对国内 IP 有区域限制，
-主 App/账号/API 必须走代理，只有 sandai.net 这个 P2P 加速 CDN 才该走直连。故拆成两个文件：
+原来用的是 `whatshub.top/rule/PikPak.list`，里面是迅雷 `sandai.net` 的 CDN 加 `DOMAIN-KEYWORD,mypikpak`，整份都走 DIRECT。问题是 PikPak 限制大陆 IP，App、登录和 API 直连用不了。所以拆成两份：
 
-- `Direct.list` = 讯雷(sandai.net) P2P 加速 CDN，国内可达更快，走直连
-- `Proxy.list` = PikPak 主 App/账号/API 域名，交叉合并 v2fly/domain-list-community 与
-  blackmatrix7/ios_rule_script 两个社区源（`mypikpak.com`/`.net`、`pikpak.me`/`.io`、
-  `pikpakdrive.com`、`pickpackapp.com`），必须走代理才能用
+- `Direct.list`：迅雷 `sandai.net` 的 P2P 加速 CDN，国内直连更快
+- `Proxy.list`：PikPak 的 App、账号和 API 域名，要走代理。域名对照了 v2fly/domain-list-community 和 blackmatrix7/ios_rule_script 两份社区列表
 
 ## 用法
 
-Surge:
+Surge：
+
 ```
 RULE-SET,https://raw.githubusercontent.com/godsonkg/pikpak-rules/main/Direct.list,DIRECT
 RULE-SET,https://raw.githubusercontent.com/godsonkg/pikpak-rules/main/Proxy.list,Proxy
 ```
 
-Loon:
+Loon：
+
 ```
 https://raw.githubusercontent.com/godsonkg/pikpak-rules/main/Direct.list, policy=DIRECT, tag=PikPak-Direct, enabled=true
 https://raw.githubusercontent.com/godsonkg/pikpak-rules/main/Proxy.list, policy=Proxy, tag=PikPak-Proxy, enabled=true
 ```
+
+`Proxy` 换成你配置里的代理策略组名。

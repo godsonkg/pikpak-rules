@@ -1,6 +1,6 @@
 # NAME: PikPak-Proxy
-# PikPak 主 App/账号/API，对国内 IP 有区域限制，不代理直接不可用
-# 域名交叉合并 v2fly/domain-list-community + blackmatrix7/ios_rule_script 两个社区源
+# PikPak 的 App、账号和 API。PikPak 限制大陆 IP，直连用不了
+# 域名对照 v2fly/domain-list-community（pikpak）和 blackmatrix7/ios_rule_script（2026-09-25 核对）
 DOMAIN-SUFFIX,mypikpak.com
 DOMAIN-SUFFIX,mypikpak.net
 DOMAIN-SUFFIX,pikpak.me
